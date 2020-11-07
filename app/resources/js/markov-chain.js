@@ -10,8 +10,15 @@ function getInput() {
 	return document.getElementById("input").value;
 }
 
-
 function splitInput(input) {
 	let splitParameter = document.getElementById("split").value;
 	return input.split(splitParameter);
+}
+
+function getRegex() {
+	return document.getElementById("regex").value;
+}
+
+function getReplace() {
+	return document.getElementById("replace").value;
 }
