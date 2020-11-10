@@ -6,6 +6,10 @@ function markov() {
 	let chain = getChain(items);
 }
 
+function getRandomElement(array) {
+	return array[Math.floor(Math.random() * array.length)];
+}
+
 function getChain(items) {
 	let chain = {};
 	for (let i = 0; i < items.length; i++) {
