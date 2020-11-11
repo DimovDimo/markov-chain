@@ -4,6 +4,20 @@ function markov() {
     let input = getInput().toLowerCase();
 	let items = getItems(input);
 	let chain = getChain(items);
+
+	generateItems(chain, 40, " ");
+}
+
+function generateItems(chain, length, joinParameter) {
+	let keys = Object.keys(chain);
+	let value = getRandomElement(keys);
+	let result = [];
+	for (let i = 0; i < length; i++) {
+		value = getRandomElement(chain[value]);
+		result.push(value);
+	}
+
+	return result.join(joinParameter);
 }
 
 function getRandomElement(array) {
