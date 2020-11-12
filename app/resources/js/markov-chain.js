@@ -4,8 +4,12 @@ function markov() {
     let input = getInput().toLowerCase();
 	let items = getItems(input);
 	let chain = getChain(items);
+	let result = generateItems(chain, 400, " ");
+	htmlOutput(result);
+}
 
-	generateItems(chain, 40, " ");
+function htmlOutput(result) {
+	document.getElementById("result").innerText = result;
 }
 
 function generateItems(chain, length, joinParameter) {
@@ -31,7 +35,7 @@ function getChain(items) {
 		newItem(chain, item);
 		relatedItem(items, i, chain, item);
 	}
-
+	
 	return chain;
 }
 
