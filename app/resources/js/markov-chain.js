@@ -1,18 +1,32 @@
+const joinConstant = " ";
+
 document.getElementById("generator").addEventListener("click", markov);
 
 function markov() {
     let input = getInput().toLowerCase();
 	let items = getItems(input);
 	let chain = getChain(items);
-	let result = generateItems(chain, 400, " ");
+	let result = generateItems(chain, getRandomWords());
 	htmlOutput(result);
+}
+
+function getRandomWords() {
+	let min = document.getElementById("min-words").value;
+	let max = document.getElementById("max-words").value;
+	let length = getRandomInteger(min, max);
+	console.log(length);
+	return length;
+}
+
+function getRandomInteger(min, max) {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function htmlOutput(result) {
 	document.getElementById("result").innerText = result;
 }
 
-function generateItems(chain, length, joinParameter) {
+function generateItems(chain, length) {
 	let keys = Object.keys(chain);
 	let value = getRandomElement(keys);
 	let result = [];
@@ -21,7 +35,7 @@ function generateItems(chain, length, joinParameter) {
 		result.push(value);
 	}
 
-	return result.join(joinParameter);
+	return result.join(joinConstant);
 }
 
 function getRandomElement(array) {
