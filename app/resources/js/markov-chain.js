@@ -11,11 +11,10 @@ function markov() {
 }
 
 function getRandomWords() {
-	let min = document.getElementById("min-words").value;
-	let max = document.getElementById("max-words").value;
-	let length = getRandomInteger(min, max);
-	console.log(length);
-	return length;
+	let min = Number(document.getElementById("min-words").value);
+	let max = Number(document.getElementById("max-words").value);
+
+	return getRandomInteger(min, max);
 }
 
 function getRandomInteger(min, max) {
