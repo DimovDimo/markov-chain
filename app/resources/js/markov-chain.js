@@ -1,4 +1,5 @@
-const joinConstant = " ";
+const joinWordsConstant = " ";
+const endOfSentenceConstant = ".";
 
 document.getElementById("generator").addEventListener("click", markov);
 
@@ -6,21 +7,38 @@ function markov() {
     let input = getInput().toLowerCase();
 	let items = getItems(input);
 	let chain = getChain(items);
-	let result = generateItems(chain, getRandomWords());
+	let words = getRandomWords(chain);
+	let result = generatSentence(words);
 	htmlOutput(result);
 }
 
-function getRandomWords() {
-	let min;
-	let max;
-	({ min, max } = getMinMax("min-words", "max-words"));
-	return getRandomInteger(min, max);
+function generatSentence(items) {
+	items[0] = capitalize(items[0]);
+	items[items.length - 1] = [items[items.length - 1], endOfSentenceConstant].join("");
+
+    return items.join(joinConstant);
+}
+
+function capitalize(item) {
+	return item.charAt(0).toUpperCase() + item.slice(1);
+}
+
+function getRandomWords(chain) {
+	let min = undefined;
+	let max = undefined;
+
+	({ min, max } = getMinMax("min-words", "max-words"))	
+	let length = getRandomInteger(min, max);
+	let items = generateItems(chain, length);
+	
+	return items;
+
 }
 
 function getMinMax(minId, maxId) {
 	let min = Number(document.getElementById(minId).value);
 	let max = Number(document.getElementById(maxId).value);
-	
+
     return setMinMax(min, max);
 }
 
@@ -51,7 +69,7 @@ function generateItems(chain, length) {
 		result.push(value);
 	}
 
-	return result.join(joinConstant);
+	return result;
 }
 
 function getRandomElement(array) {
