@@ -1,38 +1,58 @@
-const joinWordsConstant = " ";
+const joinItemsConstant = " ";
 const endOfSentenceConstant = ".";
 
 document.getElementById("generator").addEventListener("click", markov);
 
 function markov() {
-    let input = getInput().toLowerCase();
+    let chain = generateChain();
+	let paragraph = generateParagraph(chain);
+	htmlOutput(paragraph);
+}
+
+function generateChain() {
+	let input = getInput().toLowerCase();
 	let items = getItems(input);
-	let chain = getChain(items);
-	let words = getRandomWords(chain);
-	let result = generatSentence(words);
-	htmlOutput(result);
+	return getChain(items);
 }
 
-function generatSentence(items) {
-	items[0] = capitalize(items[0]);
-	items[items.length - 1] = [items[items.length - 1], endOfSentenceConstant].join("");
+function generateParagraph(chain) {
+	let length = getRandomLength("min-sentences", "max-sentences");
+	let paragraph = [];
+	for (let i = 0; i < length; i++) {
+		let words = getRandomWords(chain);
+		let sentence = generateSentence(words);
+		paragraph.push(sentence);
+	}
 
-    return items.join(joinConstant);
+	return paragraph.join(joinItemsConstant);
 }
 
-function capitalize(item) {
-	return item.charAt(0).toUpperCase() + item.slice(1);
+function generateSentence(words) {
+	words[0] = capitalize(words[0]);
+	words[words.length - 1] = [words[words.length - 1], endOfSentenceConstant].join("");
+
+    return words.join(joinItemsConstant);
+}
+
+function capitalize(word) {
+	return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
 function getRandomWords(chain) {
-	let min = undefined;
-	let max = undefined;
-
-	({ min, max } = getMinMax("min-words", "max-words"))	
-	let length = getRandomInteger(min, max);
+	let length = getRandomLength("min-words", "max-words");
 	let items = generateItems(chain, length);
 	
 	return items;
+}
 
+function getRandomLength(minId, maxId) {
+	let min = undefined;
+	let max = undefined;
+
+	({ min, max } = getMinMax(minId, maxId));
+	let length = getRandomInteger(min, max);
+
+	return length;
 }
 
 function getMinMax(minId, maxId) {
