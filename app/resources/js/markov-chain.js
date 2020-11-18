@@ -12,6 +12,7 @@ function markov() {
 function generateChain() {
 	let input = getInput().toLowerCase();
 	let items = getItems(input);
+
 	return getChain(items);
 }
 
@@ -24,7 +25,16 @@ function generateParagraph(chain) {
 		paragraph.push(sentence);
 	}
 
-	return paragraph.join(joinItemsConstant);
+	let paragraphHtml = getParagraphHtml(paragraph);
+
+	return paragraphHtml;
+}
+
+function getParagraphHtml(text) {
+	let paragraphHtml = document.createElement('p');
+	paragraphHtml.textContent = text.join(joinItemsConstant);
+	
+	return paragraphHtml;
 }
 
 function generateSentence(words) {
@@ -50,9 +60,8 @@ function getRandomLength(minId, maxId) {
 	let max = undefined;
 
 	({ min, max } = getMinMax(minId, maxId));
-	let length = getRandomInteger(min, max);
-
-	return length;
+	
+	return getRandomInteger(min, max);
 }
 
 function getMinMax(minId, maxId) {
@@ -77,7 +86,12 @@ function getRandomInteger(min, max) {
 }
 
 function htmlOutput(result) {
-	document.getElementById("result").innerText = result;
+	document.getElementById("results").innerText = "";
+
+	//let div = document.createElement('div'); 
+	//div.appendChild(paragraph);
+
+    document.getElementById("results").appendChild(result);
 }
 
 function generateItems(chain, length) {
