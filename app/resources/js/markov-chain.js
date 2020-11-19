@@ -4,9 +4,31 @@ const endOfSentenceConstant = ".";
 document.getElementById("generator").addEventListener("click", markov);
 
 function markov() {
-    let chain = generateChain();
-	let paragraph = generateParagraph(chain);
-	htmlOutput(paragraph);
+	let chain = generateChain();
+	
+	let article = [];
+	let title = generateTitle(chain);
+	article.push(title);
+
+    let length = getRandomLength("min-paragraphs", "max-paragraphs");
+	for (let i = 0; i < length; i++) {
+		let paragraph = generateParagraph(chain);
+		article.push(paragraph);
+	}
+	
+	console.log(title);
+	htmlOutput(article.join(joinItemsConstant));
+}
+
+function generateTitle(chain) {
+	let words = getRandomWords(chain);
+	words[0] = capitalize(words[0]);
+
+	let title = words.join(joinItemsConstant);
+	let titleHtml = document.createElement("h2");
+	titleHtml.textContent = title;
+	
+	return titleHtml;
 }
 
 function generateChain() {
@@ -31,7 +53,7 @@ function generateParagraph(chain) {
 }
 
 function getParagraphHtml(text) {
-	let paragraphHtml = document.createElement('p');
+	let paragraphHtml = document.createElement("p");
 	paragraphHtml.textContent = text.join(joinItemsConstant);
 	
 	return paragraphHtml;
@@ -50,9 +72,9 @@ function capitalize(word) {
 
 function getRandomWords(chain) {
 	let length = getRandomLength("min-words", "max-words");
-	let items = generateItems(chain, length);
+	let words = generateItems(chain, length);
 	
-	return items;
+	return words;
 }
 
 function getRandomLength(minId, maxId) {
