@@ -4,6 +4,7 @@ const endOfSentenceConstant = ".";
 document.getElementById("generator").addEventListener("click", markov);
 
 function markov() {
+	removeResults();
 	let chain = generateChain();
 	
 	let article = [];
@@ -16,8 +17,9 @@ function markov() {
 		article.push(paragraph);
 	}
 	
-	console.log(title);
-	htmlOutput(article.join(joinItemsConstant));
+	console.log(article);
+	//htmlOutput(article.join(joinItemsConstant));
+	htmlOutput(title.innerText);
 }
 
 function generateTitle(chain) {
@@ -108,12 +110,11 @@ function getRandomInteger(min, max) {
 }
 
 function htmlOutput(result) {
+	document.getElementById("results").innerText = result;
+}
+
+function removeResults() {
 	document.getElementById("results").innerText = "";
-
-	//let div = document.createElement('div'); 
-	//div.appendChild(paragraph);
-
-    document.getElementById("results").appendChild(result);
 }
 
 function generateItems(chain, length) {
