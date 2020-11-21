@@ -7,23 +7,22 @@ function markov() {
 	removeResults();
 	let chain = generateChain();
 	
-	let article = [];
+	let article = document.createElement("article");;
 	let title = generateTitle(chain);
-	article.push(title);
+	article.appendChild(title);
 
     let length = getRandomLength("min-paragraphs", "max-paragraphs");
 	for (let i = 0; i < length; i++) {
 		let paragraph = generateParagraph(chain);
-		article.push(paragraph);
+		article.appendChild(paragraph);
 	}
 	
 	console.log(article);
-	//htmlOutput(article.join(joinItemsConstant));
-	htmlOutput(title.innerText);
+	htmlOutput(article);
 }
 
 function generateTitle(chain) {
-	let words = getRandomWords(chain);
+	let words = getRandomWords(chain, "min-title", "max-title");
 	words[0] = capitalize(words[0]);
 
 	let title = words.join(joinItemsConstant);
@@ -44,7 +43,7 @@ function generateParagraph(chain) {
 	let length = getRandomLength("min-sentences", "max-sentences");
 	let paragraph = [];
 	for (let i = 0; i < length; i++) {
-		let words = getRandomWords(chain);
+		let words = getRandomWords(chain, "min-words", "max-words");
 		let sentence = generateSentence(words);
 		paragraph.push(sentence);
 	}
@@ -72,8 +71,8 @@ function capitalize(word) {
 	return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
-function getRandomWords(chain) {
-	let length = getRandomLength("min-words", "max-words");
+function getRandomWords(chain, minId, maxId) {
+	let length = getRandomLength(minId, maxId);
 	let words = generateItems(chain, length);
 	
 	return words;
@@ -110,7 +109,7 @@ function getRandomInteger(min, max) {
 }
 
 function htmlOutput(result) {
-	document.getElementById("results").innerText = result;
+	document.getElementById("results").appendChild(result);
 }
 
 function removeResults() {
