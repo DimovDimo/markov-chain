@@ -5,20 +5,26 @@ document.getElementById("generator").addEventListener("click", markov);
 
 function markov() {
 	removeResults();
-	let chain = generateChain();
-	
-	let article = document.createElement("article");;
+	let chain = generateChain();	
+	let article = generateArticle(chain);	
+	htmlOutput(article);
+}
+
+function generateArticle(chain) {
+	let article = document.createElement("article");
 	let title = generateTitle(chain);
 	article.appendChild(title);
+	appendParagraphs(chain, article);
 
-    let length = getRandomLength("min-paragraphs", "max-paragraphs");
+	return article;
+}
+
+function appendParagraphs(chain, article) {
+	let length = getRandomLength("min-paragraphs", "max-paragraphs");
 	for (let i = 0; i < length; i++) {
 		let paragraph = generateParagraph(chain);
 		article.appendChild(paragraph);
 	}
-	
-	console.log(article);
-	htmlOutput(article);
 }
 
 function generateTitle(chain) {
