@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Markov chain generator</title>
+    <title>Article generator</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="resources/css/reset-css.css">
     <link rel="stylesheet" type="text/css" href="resources/css/styles.css">
@@ -10,29 +10,29 @@
 
 <body>
     <main>
-        <h1>Markov chain generator</h1>
+        <h1>Article generator</h1>
         <button id="generator" type="button">Markov chain generator</button>
         <div>
             Words in the title
             between <input id="min-title" type="number" min="1" max="100" value="3">
-            and <input id="max-title" type="number" min="1" max="100" value="10">
+            and <input id="max-title" type="number" min="1" max="100" value="7">
         </div>
         <div>
             Paragraphs in the article
-            between <input id="min-paragraphs" type="number" min="1" max="100" value="3">
-            and <input id="max-paragraphs" type="number" min="1" max="100" value="10">
+            between <input id="min-paragraphs" type="number" min="1" max="100" value="5">
+            and <input id="max-paragraphs" type="number" min="1" max="100" value="15">
         </div>
         <div>
             Sentences in a paragraph
-            between <input id="min-sentences" type="number" min="1" max="100" value="3">
-            and <input id="max-sentences" type="number" min="1" max="100" value="10">
+            between <input id="min-sentences" type="number" min="1" max="100" value="10">
+            and <input id="max-sentences" type="number" min="1" max="100" value="20">
         </div>
         <div>
             Words in a sentence
-            between <input id="min-words" type="number" min="1" max="100" value="3">
+            between <input id="min-words" type="number" min="1" max="100" value="4">
             and <input id="max-words" type="number" min="1" max="100" value="10">
         </div>
-        <textarea id="input" rows="20" cols="200">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris quam nibh, sagittis in cursus quis, fringilla nec nunc. Integer mollis sit amet turpis eu molestie. Morbi porttitor mi tortor, sit amet pretium turpis sagittis eu. Vestibulum at molestie eros. Maecenas ex tortor, bibendum tincidunt lacus eget, tincidunt tempor urna. Sed tempus augue a mollis venenatis. Sed ac dapibus lorem. Sed vestibulum, magna at dictum sollicitudin, dui tellus auctor odio, sit amet malesuada felis lacus in quam. Aliquam sapien felis, molestie eu mattis quis, efficitur non nunc. Pellentesque dictum velit est, id condimentum lacus blandit quis. Nullam nunc lorem, vehicula a urna eu, tempus semper purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis id dui eu dui finibus dictum quis id nisl. Nunc diam dolor, venenatis nec ante sed, auctor aliquam dolor.</textarea>
+        <textarea id="input" rows="20" cols="200">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque et libero nibh. Nullam euismod, orci hendrerit iaculis rhoncus, augue augue euismod lectus, non aliquet nisi est eget neque. Vivamus ac elit ligula. Sed ac vestibulum ipsum. Ut suscipit bibendum ipsum quis molestie. Etiam ut tortor vitae ante dictum faucibus. In ac dui velit. Donec accumsan rhoncus velit quis porta. Integer et ex finibus, viverra nibh at, consectetur sem. Nunc at massa non ex sodales volutpat eget at nunc. Phasellus vitae bibendum lacus. Duis scelerisque nisi eu ex dapibus venenatis. Sed eu felis eget sapien posuere laoreet. Fusce sit amet augue massa. Aliquam erat volutpat. Curabitur ullamcorper eget ante non mattis. Nam justo sem, ornare nec ornare et, commodo sit amet turpis. Sed consequat mauris vel dolor mollis pulvinar. Donec purus ex, tincidunt in volutpat eu, tristique nec sapien. Phasellus id aliquam justo. Sed et cursus leo, eget varius metus. Ut vulputate est nec turpis congue, quis tincidunt elit mattis. Nunc ut purus leo. Fusce tempor nunc quam. Aenean neque est, euismod at consequat quis, dignissim sed velit. Sed et urna ex. Nam porta dictum ultricies. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras ac pellentesque arcu. Suspendisse mattis quam ex, quis dignissim ipsum varius a. Quisque dignissim dolor lectus, sed consectetur nisi rutrum a. Sed iaculis auctor libero quis fermentum. Morbi ac eleifend augue. Pellentesque pretium nunc eget nulla efficitur accumsan. Quisque placerat bibendum nibh, placerat ultrices sem vulputate et. Sed sodales sem nulla, id porttitor massa tincidunt eu. Nulla et lorem in elit cursus auctor. Sed bibendum velit ut nulla ultricies, nec tristique lacus maximus. Praesent consectetur, nisi at euismod pretium, purus odio dapibus nisi, sit amet euismod odio purus vehicula sem. Ut non semper nulla. Suspendisse scelerisque urna nisl. Morbi convallis tristique dolor, vitae fermentum augue sollicitudin a. Integer vitae mollis quam. Maecenas et augue suscipit, efficitur nisi id, eleifend erat. Duis egestas vehicula fermentum. Nam non enim ac leo ullamcorper cursus non a felis. Sed ante sem, molestie non risus vitae, maximus tempor sapien. Donec dignissim libero at risus hendrerit consectetur ut at elit. Suspendisse hendrerit nulla nec metus rhoncus egestas.</textarea>
         <div id="results"></div>
     </main>
 
