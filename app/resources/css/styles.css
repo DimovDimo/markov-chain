@@ -17,6 +17,15 @@ button {
     color: white;
 }
 
+input {
+    width: 40px;
+}
+
+h3 {
+    font-size: 30px;
+    margin: 10px;
+}
+
 h2 {
     font-size: 30px;
     margin: 10px;
