@@ -10,15 +10,21 @@ h1 {
     margin: 25px;
 }
 
+#settings {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
 button {
     font-size: 40px;
-    margin: 10px;
+    margin: 20px;
     background: blue;
     color: white;
 }
 
 input {
     width: 40px;
+    border:1px solid #6287f8;
 }
 
 h3 {
@@ -26,13 +32,22 @@ h3 {
     margin: 10px;
 }
 
+textarea {
+    margin-right: 5px;
+    min-height: 10px;
+    width: 90%;
+	border:1px solid #6287f8;
+	border-left: 4px solid #6287f8;
+}
+
 h2 {
-    font-size: 30px;
+    font-size: 40px;
     margin: 10px;
 }
 
-textarea {
-    margin-right: 5px;
+#results {
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 footer {
