@@ -37,7 +37,7 @@ textarea {
     min-height: 10px;
     width: 90%;
 	border:1px solid #6287f8;
-	border-left: 4px solid #6287f8;
+    border-left: 4px solid #6287f8;
 }
 
 h2 {
@@ -50,6 +50,11 @@ h2 {
     padding-right: 5%;
 }
 
+p {
+    margin: 10px;
+    text-align: justify;
+}
+
 footer {
-    margin: 15px;
+    margin: 25px;
 }
